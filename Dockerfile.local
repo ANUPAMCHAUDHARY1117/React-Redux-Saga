@@ -1,0 +1,13 @@
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+COPY .npmrc ./
+
+RUN npm install
+
+COPY . /usr/src/app
+
+VOLUME /usr/src/app
+VOLUME /usr/src/app/node_modules
+
+CMD [ "npm", "run", "start:docker" ]
